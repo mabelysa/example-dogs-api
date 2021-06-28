@@ -4,8 +4,8 @@ class DogsController < ApplicationController
       name: params[:name],
       age: params[:email],
       breed: params[:breed],
-      password: params[:password],
-      password_confirmation: params[:password_confirmation],
+      # password: params[:password],
+      # password_confirmation: params[:password_confirmation],
     )
     if dog.save
       render json: { message: "User created successfully" }, status: :created
