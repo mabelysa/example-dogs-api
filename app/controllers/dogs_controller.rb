@@ -1,16 +1,18 @@
 class DogsController < ApplicationController
   def create
-    dog = Dogs.new(
+    dog = Dog.new(
       name: params[:name],
       age: params[:email],
       breed: params[:breed],
-      # password: params[:password],
-      # password_confirmation: params[:password_confirmation],
     )
-    if dog.save
-      render json: { message: "User created successfully" }, status: :created
+    if current_user
+      if dog.save
+        render json: { message: "User created successfully" }, status: :created
+      else
+        render json: { errors: dog.errors.full_messages }, status: :bad_request
+      end
     else
-      render json: { errors: dog.errors.full_messages }, status: :bad_request
+      render json: []
     end
   end
 end
