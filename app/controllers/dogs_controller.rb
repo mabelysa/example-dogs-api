@@ -9,10 +9,9 @@ class DogsController < ApplicationController
       if dog.save
         render json: { message: "User created successfully" }, status: :created
       else
-        render json: { errors: dog.errors.full_messages }, status: :bad_request
+        render json: []
+        # render json: { errors: dog.errors.full_messages }, status: :bad_request
       end
-    else
-      render json: []
     end
   end
 end
